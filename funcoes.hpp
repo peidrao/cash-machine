@@ -23,7 +23,16 @@ public:
   double retirar();
 };
 
-
+void acessar_conta(int);
+void salvar_conta();
+void visualizar_contas();
+void depositar(int);
+void sacar(int, double);
+void transferir(int, int); /*Recebe a conta que vai transferir e a conta destino*/
+void consultar_saldo(int);
+void menu_cliente();
+void menu_inicial();
+char opcao_menu();
 
 
 #endif // !HEADER_HPP
