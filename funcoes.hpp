@@ -4,6 +4,7 @@
 #include <math.h>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 
 class Cliente
 {
@@ -19,8 +20,8 @@ public:
   int get_conta() const;
   int get_senha() const;
   double get_saldo() const;
-  double deposito();
-  double retirar();
+  double deposito(double);
+  double retirar(double);
 };
 
 void acessar_conta(int);
