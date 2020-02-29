@@ -8,7 +8,7 @@
 class Cliente
 {
 private:
-  char nome[50];
+  char nome_[50];
   int senha_;
   int conta_;
   float saldo_ = 0;
