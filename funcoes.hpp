@@ -12,7 +12,7 @@ private:
   char nome_[50];
   int senha_;
   int conta_;
-  float saldo_ = 0;
+  float saldo_ = 0.0;
 public:
   void criar_conta();
   void mostrar_conta() const;

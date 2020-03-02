@@ -13,17 +13,17 @@ float Cliente::retirar(float y)
 
 int Cliente::get_conta() const
 {
-  return conta_;
+  return this->conta_;
 }
 
 int Cliente::get_senha() const
 {
-  return senha_;
+  return  this->senha_;
 }
 
 float Cliente::get_saldo() const
 {
-  return saldo_;
+  return this->saldo_;
 }
 
 void Cliente::mensagem() const
@@ -33,9 +33,9 @@ void Cliente::mensagem() const
 
 void Cliente::mostrar_conta() const
 {
-  cout << "Nome do Proprietário: " << setw(5) << this->nome_ << endl;
-  cout << "Conta: " << setw(10) << this->get_conta() << endl;
-  cout << "Saldo: " << setw(10) << this->get_saldo() << endl;
+  cout << "Nome do Proprietário: " << setw(5) << nome_ << endl;
+  cout << "Conta: " << setw(10) << get_conta() << endl;
+  cout << "Saldo: " << setw(10) << get_saldo() << endl;
 }
 
 void salvar_conta()
@@ -72,7 +72,7 @@ void Cliente::criar_conta()
   cout << "Senha (Apenas números): ";
   cin >> senha_;
   conta_ = senha_ + (rand() % 1000);
-  cout << "Conta: " << conta_ << endl;
+  cout << "Conta: " << this->conta_ << endl;
 
   cout << "+=============================+" << endl
        << "| DESEJA FAZER ALGUM DEPÓSITO |" << endl
@@ -81,7 +81,7 @@ void Cliente::criar_conta()
        << "|DIGITE UMA OPCAO >>>>> ";
 
   cin >> opcao;
-  if (opcao == 's' || 'S')
+  if (opcao == 's' || opcao == 'S')
   {
     cout << "QUANTO DESEJA DEPOSITAR: R$ ";
     cin >> saldo_;
@@ -92,7 +92,6 @@ void Cliente::criar_conta()
   }
 
   cout << "Conta criada com sucesso!" << endl;
-  acessar_conta(conta_);
 }
 
 void acessar_conta(int conta)
@@ -102,7 +101,7 @@ void acessar_conta(int conta)
   fstream arquivo;
   int senha;
   bool validacao = false;
-
+ 
   arquivo.open("contas.dat", ios::in | ios::out | ios::binary);
   if (!arquivo)
   {
@@ -114,6 +113,7 @@ void acessar_conta(int conta)
     arquivo.read(reinterpret_cast<char *>(&cliente_), sizeof(Cliente));
     if (conta == cliente_.get_conta())
     {
+       cout << cliente_.get_conta() << endl;
       cout << "Digite sua senha: ";
       cin >> senha;
       if (cliente_.get_senha() == senha)
@@ -138,6 +138,7 @@ void depositar(int conta, float valorDepositado)
   bool validacao = false;
   Cliente cliente_;
   fstream arquivo;
+  
   arquivo.open("contas.dat", ios::binary | ios::in | ios::out);
   if (!arquivo)
   {
@@ -147,8 +148,6 @@ void depositar(int conta, float valorDepositado)
   while (!arquivo.eof() && validacao == false)
   {
     arquivo.read(reinterpret_cast<char *>(&cliente_), sizeof(Cliente));
-    cout << cliente_.get_conta() << endl;
-
     if (cliente_.get_conta() == conta)
     {
       cout << "teste4" << endl;
@@ -172,7 +171,8 @@ void menu_cliente()
   char opcao;
   int contaOrigem, contaDestino;
   float valorDepositado, valorRetirado;
-
+  
+cout << cliente_.get_conta() << endl;
   do
   {
     cout << endl
@@ -193,6 +193,7 @@ void menu_cliente()
     case '1':
       cout << "Depositar na conta: ";
       cin >> contaDestino;
+       cout << cliente_.get_conta() << endl;
       cout << "Valor: R$ ";
       cin >> valorDepositado;
       depositar(contaDestino, valorDepositado);
@@ -236,6 +237,9 @@ char opcao_menu()
     if (opcao == 'n' || opcao == 'N')
     {
       salvar_conta();
+      cout << "Digite sua conta: ";
+      cin >> conta;
+      acessar_conta(conta);
     }
      else if (opcao == 's' || opcao == 'S')
     {
