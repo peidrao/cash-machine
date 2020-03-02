@@ -4,14 +4,15 @@
 #include <math.h>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 
 class Cliente
 {
 private:
-  char nome[50];
+  char nome_[50];
   int senha_;
   int conta_;
-  float saldo_ = 0;
+  double saldo_ = 0;
 public:
   void criar_conta();
   void mostrar_conta() const;
@@ -19,8 +20,8 @@ public:
   int get_conta() const;
   int get_senha() const;
   double get_saldo() const;
-  double deposito();
-  double retirar();
+  double deposito(double);
+  double retirar(double);
 };
 
 void acessar_conta(int);
