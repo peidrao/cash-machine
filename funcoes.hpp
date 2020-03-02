@@ -19,21 +19,22 @@ public:
   void mensagem() const;
   int get_conta() const;
   int get_senha() const;
-  double get_saldo() const;
-  double deposito(double);
-  double retirar(double);
+  float get_saldo() const;
+  float deposito(float);
+  float retirar(float);
 };
 
 void acessar_conta(int);
 void salvar_conta();
 void visualizar_contas();
-void depositar(int);
-void sacar(int, double);
+void depositar(int, float);
+void sacar(int, float);
 void transferir(int, int); /*Recebe a conta que vai transferir e a conta destino*/
-void consultar_saldo(int);
+void saldo_atual(int);
 void menu_cliente();
 void menu_inicial();
 char opcao_menu();
+void listarClientes(); /* Função para visualizar todos os usuários -> Teste */
 
 
 
