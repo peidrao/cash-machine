@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    ".sequelizerc": "javascript",
+    "iostream": "cpp",
+    "new": "cpp",
+    "stdexcept": "cpp",
+    "*.tcc": "cpp",
+    "ostream": "cpp"
+  }
+}
