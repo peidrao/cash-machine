@@ -1,6 +1,9 @@
 #include "funcoes.hpp"
 
-int main() {
-  Cliente cliente;
-  opcao_menu();
+int main()
+{
+    char opcao;
+    int num;
+        
+    opcaoMenu();
 }

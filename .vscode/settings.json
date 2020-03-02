@@ -5,6 +5,7 @@
     "new": "cpp",
     "stdexcept": "cpp",
     "*.tcc": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "iosfwd": "cpp"
   }
 }
